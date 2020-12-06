@@ -14,52 +14,57 @@ def find_field(passport):
 # Verify the value in the field with regex
 def field_with_con(passport):
     # Match birth year
-    #birth_y = int(re.search(r'(?:byr:)(\d+)', passport).group(1))
-    #if (birth_y < 1920) | (birth_y > 2002):
-     #   return 0
+
+    birth_y = re.search(r'(?:byr:)(\d+)', passport)
+    if birth_y is None:
+        return 0
+    elif not ((int(birth_y.group(1)) >= 1920) & (int(birth_y.group(1)) <= 2002)):
+        return 0
 
     # Match issue year
-    #issue_y = int(re.search(r'(?:iyr:)(\d+)', passport).group(1))
-    #if (issue_y < 2010) | (issue_y > 2020):
-    #    return 0
+    issue_y = re.search(r'(?:iyr:)(\d+)', passport)
+    if issue_y is None:
+        return 0
+    elif not ((int(issue_y.group(1)) >= 2010) & (int(issue_y.group(1)) <= 2020)):
+        return 0
 
     # Match expiration year
-    #exp_y = int(re.search(r'(?:eyr:)(\d+)', passport).group(1))
-    #if (exp_y == None) | (exp_y < 2020) | (exp_y > 2030):
-     #   return 0
+    exp_y = re.search(r'(?:eyr:)(\d+)', passport)
+    if exp_y is None:
+        return 0
+    elif not ((int(exp_y.group(1)) >= 2020) & (int(exp_y.group(1)) <= 2030)):
+        return 0
 
     # Match height
     height = re.search(r'(?:hgt:)(\d+)(cm|in)', passport)
-    print(height)
-    if height == None:
-        print(height)
+    if height is None:
         return 0
-    elif height.group(2) == None:
-        print("no unit")
-        return 0
-    elif (height.group(2) == "cm") & ((int(height.group(1)) < 150) | (int(height.group(1)) > 193)):
-        print(height)
-        return 0
-    elif (height.group(2) == "in") & ((int(height.group(1)) < 59) | (int(height.group(1)) > 76)):
-        print(height)
-        return 0
+    elif height.group(2) == "cm":
+        if not ((int(height.group(1)) >= 150) & (int(height.group(1)) <= 193)):
+            return 0
+    elif height.group(2) == "in":
+        if not ((int(height.group(1)) >= 59) & (int(height.group(1)) <= 76)):
+            return 0
 
     # Match hair color
     hair_color = re.search(r'(?:hcl:)(#[0-9a-f]+)', passport)
-    if (hair_color == None):
+    if hair_color is None:
         return 0
-    elif (len(hair_color.group(1)) != 6):
+    elif len(hair_color.group(1)) != 7:
         return 0
 
     # Match eyes color
     eye_color = re.search(r'(?:ecl:)(amb|blu|brn|gry|grn|hzl|oth)', passport)
-    if eye_color == None:
+    if eye_color is None:
         return 0
 
     # Match passport ID
-    pass_id = re.search(r'(?:pid:)(\d+)', passport).group(1)
-    if len(pass_id) != 9:
+    pass_id = re.search(r'(?:pid:)(\d+)', passport)
+    if pass_id is None:
         return 0
+    elif len(pass_id.group(1)) != 9:
+        return 0
+    return 1
 
 
 # Read input from file
@@ -71,8 +76,7 @@ input_list = input_file.read().split("\n\n")
 count_valid1 = 0
 for i in input_list:
     count_valid1 += find_field(i)
-
-#print(count_valid1)
+print("Part 1 answer: ", count_valid1)
 
 
 # ===Part 2===
@@ -80,5 +84,4 @@ count_valid2 = 0
 for i in input_list:
     if find_field(i) == 1:
         count_valid2 += field_with_con(i)
-
-print(count_valid2)
+print("Part 2 answer: ", count_valid2)
