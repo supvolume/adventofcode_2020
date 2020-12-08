@@ -1,4 +1,5 @@
-"""Count the number of bag colors that can eventually contain at least one shiny gold bag"""
+"""Count the number of bag colors that can eventually contain at least one shiny gold bag
+https://adventofcode.com/2020/day/7"""
 
 import re
 
