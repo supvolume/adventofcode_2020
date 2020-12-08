@@ -1,4 +1,5 @@
-"""Find seat row from binary partitioning"""
+"""Find seat row from binary partitioning
+https://adventofcode.com/2020/day/5"""
 
 
 def find_row(row_code,min_row, max_row):
