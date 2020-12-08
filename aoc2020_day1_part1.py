@@ -1,4 +1,5 @@
-"""Find the two entries that sum to 2020 and then multiply those two numbers together"""
+"""Find the two entries that sum to 2020 and then multiply those two numbers together
+https://adventofcode.com/2020/day/1"""
 
 # Read input from file
 number_file = open("day1_input.txt", "r")
