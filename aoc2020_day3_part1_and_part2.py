@@ -1,4 +1,5 @@
-"""Count the number of tree (#) when starting at the top-left corner of the map and following a slope"""
+"""Count the number of tree (#) when starting at the top-left corner of the map and following a slope
+https://adventofcode.com/2020/day/3"""
 
 
 def count_hash(x_increase, y_increase):
