@@ -1,4 +1,5 @@
-"""Find the number of valid password according to the condition part 2"""
+"""Find the number of valid password according to the condition part 2
+https://adventofcode.com/2020/day/2"""
 
 def find_valid2(password_con):
     # Split condition and password
