@@ -1,4 +1,5 @@
-"""Count the number of the question that everyone in the group answer yes"""
+"""Count the number of the question that everyone in the group answer yes
+https://adventofcode.com/2020/day/6"""
 
 # Read input from file
 input_file = open("day6_input.txt", "r")

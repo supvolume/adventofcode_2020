@@ -1,4 +1,5 @@
-"""Count the number of answer yes (the unique character) for each group of passenger"""
+"""Count the number of answer yes (the unique character) for each group of passenger
+https://adventofcode.com/2020/day/6"""
 
 # Read input from file
 input_file = open("day6_input.txt", "r")
