@@ -32,7 +32,7 @@ all_bag = {}
 for i in input_list:
     main_bag, sub_bag = find_bag(i)
     all_bag[main_bag] = sub_bag
-"""
+
 # ===Part 1===
 # Keep adding the bag that relate to shiny gold bag
 # Loop until there is no change in the unique bag list
@@ -50,23 +50,31 @@ while True:
         break
     else:
         bag_list_len = len(set(bag_list))
-print(len(set(bag_list)))
-"""
+print("Part 1 answer: ", len(set(bag_list)))
+
 
 # ===Part 2=== (not finish)
 
-def count_bag(bag_name, all_bag):
-    bag_num = 0
-    for k, v in all_bag[bag_name].items():
-        bag_num += int(v)
-    return bag_num, list(all_bag[bag_name].keys())
 
+# Get the the list of the sub bag, with the repetitive amount equal to number of the bag
+def count_bag(bag_name, all_bag):
+    sub_bag_list = []
+    for bag, bag_n in all_bag[bag_name].items():
+        for i in range(int(bag_n)):
+            sub_bag_list.append(bag)
+    return sub_bag_list
+
+# Find the number of sub bag until there is no sub bag left
 tot_bag_num = 0
 check_list = ["shiny gold bag"]
 while len(check_list) > 0:
-    n, add_bag = count_bag(check_list[0], all_bag)
-    tot_bag_num += n
-    check_list += add_bag
-    print(check_list, n)
+    sub_bag_list = count_bag(check_list[0], all_bag)
+    tot_bag_num += 1
+    # Add sub bag to the check_list to further check if there are any bag inside
+    check_list += sub_bag_list
+    # Remove from the list after check
     check_list.pop(0)
-print(tot_bag_num)
+
+print("Part 2 answer: ", tot_bag_num-1) # Minus the shiny gold bag itself
+
+
