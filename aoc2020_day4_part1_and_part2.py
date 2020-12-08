@@ -1,4 +1,5 @@
-"""Count the number of valid passports - those that have all required fields. Treat cid as optional."""
+"""Count the number of valid passports - those that have all required fields. Treat cid as optional.
+https://adventofcode.com/2020/day/4"""
 
 import re
 
