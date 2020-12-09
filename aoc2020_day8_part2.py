@@ -1,4 +1,5 @@
-"""Find where to change jmp to nop or nop to jmp, and get the accumulator value after it terminates"""
+"""Find where to change jmp to nop or nop to jmp, and get the accumulator value after it terminates
+https://adventofcode.com/2020/day/8"""
 
 import copy
 

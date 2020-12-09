@@ -1,4 +1,5 @@
-"""Find the accumulator value before it run the second time"""
+"""Find the accumulator value before it run the second time
+https://adventofcode.com/2020/day/8"""
 
 # Read input from file
 input_file = open("day8_input.txt", "r")
